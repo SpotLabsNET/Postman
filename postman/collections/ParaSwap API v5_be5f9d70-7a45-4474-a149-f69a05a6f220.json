@@ -88,7 +88,7 @@
 					"response": [
 						{
 							"id": "9b348129-3112-47b3-9217-2e7573e3efd8",
-							"name": "List of available tokens",
+							"name": "List tokens",
 							"originalRequest": {
 								"method": "GET",
 								"header": [],
@@ -105,7 +105,7 @@
 										{
 											"key": "network",
 											"value": "<Error: Could not resolve allOf schema",
-											"description": "(Required) ID of the network. (Mainnet - 1, Ropsten - 3, Polygon - 56, BSC - 137)."
+											"description": "(Required) ID of the network. (Mainnet - 1, Ropsten - 3, Polygon - 56, BSC - 137, Fathom - 250, Avalanche - 43114)."
 										}
 									]
 								}
@@ -595,13 +595,13 @@
 	],
 	"variable": [
 		{
-			"id": "aa4fe77f-4b69-429e-9aa3-9c66ab5e2094",
+			"id": "6617ae8b-7bc1-4b57-a78e-e9371188190e",
 			"key": "baseUrl",
 			"value": "https://apiv5.paraswap.io",
 			"type": "string"
 		},
 		{
-			"id": "7595adf9-2e58-484f-930b-b53c258ae47b",
+			"id": "f5829e93-c34d-45c7-a6e8-20b38c82cbb5",
 			"key": "srcDecimals",
 			"value": "18"
 		}

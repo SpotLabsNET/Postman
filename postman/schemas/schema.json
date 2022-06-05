@@ -11,6 +11,7 @@
     },
     "version": "1.0"
   },
+  "security": [],
   "externalDocs": {
     "description": "Paraswap Website",
     "url": "http://paraswap.io"
@@ -40,6 +41,7 @@
         "tags": [
           "tokens"
         ],
+        "security": [],
         "description": "alias for /tokens/1",
         "responses": {
           "200": {
@@ -75,6 +77,7 @@
     },
     "/tokens/{network}": {
       "get": {
+        "security": [],
         "tags": [
           "tokens"
         ],
@@ -82,7 +85,7 @@
           {
             "name": "network",
             "in": "path",
-            "description": "ID of the network. (Mainnet - 1, Ropsten - 3, Polygon - 56, BSC - 137).",
+            "description": "ID of the network. (Mainnet - 1, Ropsten - 3, Polygon - 56, BSC - 137, Fantom - 250, Avalanche - 43114).",
             "required": true,
             "style": "simple",
             "explode": false,
