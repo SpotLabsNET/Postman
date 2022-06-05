@@ -1,0 +1,609 @@
+{
+	"info": {
+		"_postman_id": "72c1bf0b-a713-493f-b199-7b0f670d661f",
+		"name": "ParaSwap API v5",
+		"description": "Contact Support:\n Email: contact@paraswap.io",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "tokens",
+			"item": [
+				{
+					"name": "/tokens",
+					"id": "d70315e9-869e-474e-8d12-aa58cecb628d",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/tokens",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"tokens"
+							]
+						},
+						"description": "alias for /tokens/1"
+					},
+					"response": [
+						{
+							"id": "d9e91d1f-fb83-4e34-aac0-4ff98c7e20fa",
+							"name": "List tokens (1:Ethereum)",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/tokens",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"tokens"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"responseTime": null,
+							"body": "{\n  \"tokens\": [\n    {\n      \"symbol\": \"ETH\",\n      \"address\": \"0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE\",\n      \"decimals\": 18,\n      \"img\": \"https://img.paraswap.network/ETH.png\",\n      \"network\": 1\n    },\n    {\n      \"symbol\": \"USDT\",\n      \"address\": \"0xdac17f958d2ee523a2206206994597c13d831ec7\",\n      \"decimals\": 6,\n      \"img\": \"https://img.paraswap.network/USDT.png\",\n      \"network\": 1\n    }\n  ]\n}"
+						}
+					]
+				},
+				{
+					"name": "/tokens/:network",
+					"id": "599fe640-78c5-46af-8a84-84c0d0d90d4d",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/tokens/{{network}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"tokens",
+								"{{network}}"
+							]
+						}
+					},
+					"response": [
+						{
+							"id": "9b348129-3112-47b3-9217-2e7573e3efd8",
+							"name": "List of available tokens",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/tokens/:network",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"tokens",
+										":network"
+									],
+									"variable": [
+										{
+											"key": "network",
+											"value": "<Error: Could not resolve allOf schema",
+											"description": "(Required) ID of the network. (Mainnet - 1, Ropsten - 3, Polygon - 56, BSC - 137)."
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"responseTime": null,
+							"body": "{\n  \"tokens\": [\n    {\n      \"symbol\": \"ETH\",\n      \"address\": \"0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE\",\n      \"decimals\": 18,\n      \"img\": \"https://img.paraswap.network/ETH.png\",\n      \"network\": 1\n    },\n    {\n      \"symbol\": \"USDT\",\n      \"address\": \"0xdac17f958d2ee523a2206206994597c13d831ec7\",\n      \"decimals\": 6,\n      \"img\": \"https://img.paraswap.network/USDT.png\",\n      \"network\": 1\n    }\n  ]\n}"
+						}
+					]
+				}
+			],
+			"id": "e9019408-c8d8-43b2-ab45-2c3f1ca896d6"
+		},
+		{
+			"name": "/prices",
+			"id": "8fe1e3f5-8999-4d6e-b1b9-44ca4b0ab70b",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "{{baseUrl}}/prices?srcToken={{srcToken}}&srcDecimals={{srcDecimals}}&destToken=&destDecimals=&amount=&side=SELL&value={{network}}&otherExchangePrices=&includeDEXS=&excludeDEXS=&includeContractMethods=&excludeContractMethods=&userAddress={{wallet}}&route=&partner=",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"prices"
+					],
+					"query": [
+						{
+							"key": "srcToken",
+							"value": "{{srcToken}}",
+							"description": "(Required) Source Token Address or Token Symbol (for tokens from /tokens)."
+						},
+						{
+							"key": "srcDecimals",
+							"value": "{{srcDecimals}}",
+							"description": "Source Token Decimals; can be omitted if Symbol is provided for `srcToken`."
+						},
+						{
+							"key": "destToken",
+							"value": "",
+							"description": "(Required) Destination Token Address or Token Symbol (for tokens from /tokens)."
+						},
+						{
+							"key": "destDecimals",
+							"value": "",
+							"description": "Destination Token Decimals; can be omitted if Symbol is provided for `destToken`."
+						},
+						{
+							"key": "amount",
+							"value": "",
+							"description": "(Required) Amount in the Denomination of Source Token"
+						},
+						{
+							"key": "side",
+							"value": "SELL",
+							"description": "(Required) Side of the swap."
+						},
+						{
+							"key": "value",
+							"value": "{{network}}",
+							"description": "ID of the blockchain network."
+						},
+						{
+							"key": "otherExchangePrices",
+							"value": "",
+							"description": "_If provided_, **others** object is filled in the response with price quotes from other exchanges (if available for comparison)."
+						},
+						{
+							"key": "includeDEXS",
+							"value": "",
+							"description": "Comma Separated List of DEXs to include without spaces."
+						},
+						{
+							"key": "excludeDEXS",
+							"value": "",
+							"description": "Comma Separated List of DEXs to exclude without spaces."
+						},
+						{
+							"key": "includeContractMethods",
+							"value": "",
+							"description": "Comma Separated List of Contract Methods to include without spaces."
+						},
+						{
+							"key": "excludeContractMethods",
+							"value": "",
+							"description": "Comma Separated List of Contract Methods to exclude without spaces."
+						},
+						{
+							"key": "userAddress",
+							"value": "{{wallet}}",
+							"description": "User Wallet Address."
+						},
+						{
+							"key": "route",
+							"value": "",
+							"description": "Dash (-) separated list of tokens (addresses or symbols from /tokens) to comprise the price route. Max 4 tokens"
+						},
+						{
+							"key": "partner",
+							"value": "",
+							"description": "partner string"
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"id": "536de10d-b351-4303-a4d7-04870063c8ee",
+					"name": "Successful prices response",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/prices?srcToken=0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE&srcDecimals=<integer>&destToken=0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48&destDecimals=<integer>&amount=1000000000000000000&side=<string>&value=<Error: Could not resolve allOf schema&otherExchangePrices=true&includeDEXS=SushiSwap,SushiSwap&excludeDEXS=SushiSwap,SushiSwap&includeContractMethods=<string>,<string>&excludeContractMethods=<string>,<string>&userAddress=dolor est sit in tempor&route=dolor est sit in tempor&partner=dolor est sit in tempor",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"prices"
+							],
+							"query": [
+								{
+									"key": "srcToken",
+									"value": "0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE"
+								},
+								{
+									"key": "srcDecimals",
+									"value": "<integer>"
+								},
+								{
+									"key": "destToken",
+									"value": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48"
+								},
+								{
+									"key": "destDecimals",
+									"value": "<integer>"
+								},
+								{
+									"key": "amount",
+									"value": "1000000000000000000"
+								},
+								{
+									"key": "side",
+									"value": "<string>"
+								},
+								{
+									"key": "value",
+									"value": "<Error: Could not resolve allOf schema"
+								},
+								{
+									"key": "otherExchangePrices",
+									"value": "true"
+								},
+								{
+									"key": "includeDEXS",
+									"value": "SushiSwap,SushiSwap"
+								},
+								{
+									"key": "excludeDEXS",
+									"value": "SushiSwap,SushiSwap"
+								},
+								{
+									"key": "includeContractMethods",
+									"value": "<string>,<string>"
+								},
+								{
+									"key": "excludeContractMethods",
+									"value": "<string>,<string>"
+								},
+								{
+									"key": "userAddress",
+									"value": "dolor est sit in tempor"
+								},
+								{
+									"key": "route",
+									"value": "dolor est sit in tempor"
+								},
+								{
+									"key": "partner",
+									"value": "dolor est sit in tempor"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						}
+					],
+					"cookie": [],
+					"responseTime": null,
+					"body": "{\n  \"priceRoute\": {\n    \"bestRoute\": {\n      \"percent\": 100,\n      \"swaps\": [\n        {\n          \"destDecimals\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"destToken\": \"0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48\",\n          \"srcDecimals\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"srcToken\": \"0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE\",\n          \"swapExchanges\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        },\n        {\n          \"destDecimals\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"destToken\": \"0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48\",\n          \"srcDecimals\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"srcToken\": \"0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE\",\n          \"swapExchanges\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        }\n      ]\n    },\n    \"blockNumber\": 13015909,\n    \"contractAddress\": \"0x485D2446711E141D2C8a94bC24BeaA5d5A110D74\",\n    \"contractMethod\": \"swapOnUniswap\",\n    \"destAmount\": \"1000000000000000000\",\n    \"destDecimals\": \"<integer>\",\n    \"destToken\": \"0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48\",\n    \"destUSD\": \"3218.9300566052\",\n    \"gasCost\": \"111435\",\n    \"gasCostUSD\": \"11.947163\",\n    \"hmac\": \"319c5cf83098a07aeebb11bed6310db51311201f\",\n    \"maxImpactReached\": false,\n    \"network\": \"<number>\",\n    \"partner\": \"paraswap.io\",\n    \"partnerFee\": 0,\n    \"side\": \"<string>\",\n    \"srcAmount\": \"1000000000000000000\",\n    \"srcDecimals\": \"<integer>\",\n    \"srcToken\": \"0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE\",\n    \"srcUSD\": \"3230.3000000000\",\n    \"tokenTransferProxy\": \"0x3e7d31751347BAacf35945074a4a4A41581B2271\",\n    \"others\": {\n      \"destAmount\": \"3255989380\",\n      \"exchange\": \"UniswapV2\",\n      \"srcAmount\": \"1000000000000000000\",\n      \"unit\": \"3255989380\",\n      \"data\": {}\n    }\n  }\n}"
+				},
+				{
+					"id": "72824807-3942-45b8-a920-a31721268d46",
+					"name": "Price Error",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/prices?srcToken=0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE&srcDecimals=<integer>&destToken=0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48&destDecimals=<integer>&amount=1000000000000000000&side=<string>&value=<Error: Could not resolve allOf schema&otherExchangePrices=true&includeDEXS=SushiSwap,SushiSwap&excludeDEXS=SushiSwap,SushiSwap&includeContractMethods=<string>,<string>&excludeContractMethods=<string>,<string>&userAddress=dolor est sit in tempor&route=dolor est sit in tempor&partner=dolor est sit in tempor",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"prices"
+							],
+							"query": [
+								{
+									"key": "srcToken",
+									"value": "0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE"
+								},
+								{
+									"key": "srcDecimals",
+									"value": "<integer>"
+								},
+								{
+									"key": "destToken",
+									"value": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48"
+								},
+								{
+									"key": "destDecimals",
+									"value": "<integer>"
+								},
+								{
+									"key": "amount",
+									"value": "1000000000000000000"
+								},
+								{
+									"key": "side",
+									"value": "<string>"
+								},
+								{
+									"key": "value",
+									"value": "<Error: Could not resolve allOf schema"
+								},
+								{
+									"key": "otherExchangePrices",
+									"value": "true"
+								},
+								{
+									"key": "includeDEXS",
+									"value": "SushiSwap,SushiSwap"
+								},
+								{
+									"key": "excludeDEXS",
+									"value": "SushiSwap,SushiSwap"
+								},
+								{
+									"key": "includeContractMethods",
+									"value": "<string>,<string>"
+								},
+								{
+									"key": "excludeContractMethods",
+									"value": "<string>,<string>"
+								},
+								{
+									"key": "userAddress",
+									"value": "dolor est sit in tempor"
+								},
+								{
+									"key": "route",
+									"value": "dolor est sit in tempor"
+								},
+								{
+									"key": "partner",
+									"value": "dolor est sit in tempor"
+								}
+							]
+						}
+					},
+					"status": "Bad Request",
+					"code": 400,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						}
+					],
+					"cookie": [],
+					"responseTime": null,
+					"body": "{\n  \"error\": \"computePrice Error\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Build Transaction to be sent to the blockchain.",
+			"id": "7bd5f6b1-7653-452a-b9d6-4aa73ef562af",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"srcToken\": \"0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE\",\n  \"destToken\": \"0xdac17f958d2ee523a2206206994597c13d831ec7\",\n  \"srcAmount\": \"10000000000000000\",\n  \"destAmount\": \"29504841\",\n  \"priceRoute\": {\n    \"blockNumber\": 13056637,\n    \"network\": 1,\n    \"srcToken\": \"0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE\",\n    \"srcDecimals\": 18,\n    \"srcAmount\": \"10000000000000000\",\n    \"destToken\": \"0xdac17f958d2ee523a2206206994597c13d831ec7\",\n    \"destDecimals\": 6,\n    \"destAmount\": \"30708775\",\n    \"bestRoute\": [\n      {\n        \"percent\": 100,\n        \"swaps\": [\n          {\n            \"srcToken\": \"0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE\",\n            \"srcDecimals\": 18,\n            \"destToken\": \"0xdac17f958d2ee523a2206206994597c13d831ec7\",\n            \"destDecimals\": 6,\n            \"swapExchanges\": [\n              {\n                \"exchange\": \"SakeSwap\",\n                \"srcAmount\": \"10000000000000000\",\n                \"destAmount\": \"30708775\",\n                \"percent\": 100,\n                \"data\": {\n                  \"router\": \"0xF9234CB08edb93c0d4a4d4c70cC3FfD070e78e07\",\n                  \"path\": [\n                    \"0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2\",\n                    \"0xdac17f958d2ee523a2206206994597c13d831ec7\"\n                  ],\n                  \"factory\": \"0x75e48C954594d64ef9613AeEF97Ad85370F13807\",\n                  \"initCode\": \"0xb2b53dca60cae1d1f93f64d80703b888689f28b63c483459183f2f4271fa0308\",\n                  \"feeFactor\": 10000,\n                  \"pools\": [\n                    {\n                      \"address\": \"0xE2E5Aca8E483a4C057892EE1f03BEBc9BfA1F9C2\",\n                      \"fee\": 30,\n                      \"direction\": true\n                    }\n                  ],\n                  \"gasUSD\": \"16.005884\"\n                }\n              }\n            ]\n          }\n        ]\n      }\n    ],\n    \"gasCostUSD\": \"17.836157\",\n    \"gasCost\": \"111435\",\n    \"side\": \"SELL\",\n    \"tokenTransferProxy\": \"0x216b4b4ba9f3e719726886d34a177484278bfcae\",\n    \"contractAddress\": \"0xDEF171Fe48CF0115B1d80b88dc8eAB59176FEe57\",\n    \"contractMethod\": \"swapOnUniswapFork\",\n    \"partnerFee\": 0,\n    \"srcUSD\": \"30.7085000000\",\n    \"destUSD\": \"30.7087750000\",\n    \"partner\": \"paraswap.io\",\n    \"maxImpactReached\": false,\n    \"hmac\": \"1ea308b9bcd027b4c89cebc260b550e812873191\"\n  },\n  \"userAddress\": \"0xbe0eb53f46cd790cd13851d5eff43d12404d33e8\",\n  \"partner\": \"paraswap.io\",\n  \"srcDecimals\": 18,\n  \"destDecimals\": 6\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/transactions/:network?gasPrice=dolor est sit in tempor&ignoreChecks=true&ignoreGasEstimate=true&onlyParams=true",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"transactions",
+						":network"
+					],
+					"query": [
+						{
+							"key": "gasPrice",
+							"value": "dolor est sit in tempor",
+							"description": "The set gas-price for the transaction in wei."
+						},
+						{
+							"key": "ignoreChecks",
+							"value": "true",
+							"description": "Allows the API to skip performing onchain checks such as balances, allowances, as well as transaction simulations.\n<b>Note:</b> The response does not contain <b><u>gas</u></b> parameter when <i>ignoreChecks</i> is set to `true`.\n"
+						},
+						{
+							"key": "ignoreGasEstimate",
+							"value": "true",
+							"description": "Allows the API to skip gas checks <b>Note:</b> The response does not contain <b><u>gas</u></b> parameter when <i>ignoreGasEstimate</i> is set to `true`."
+						},
+						{
+							"key": "onlyParams",
+							"value": "true",
+							"description": "Allows the API to return the contract parameters only."
+						}
+					],
+					"variable": [
+						{
+							"id": "a5878713-80f7-4ee9-a476-f41002bafc76",
+							"key": "network",
+							"value": "<Error: Could not resolve allOf schema",
+							"description": "(Required) ID of the network. (Mainnet - 1, Ropsten - 3, Polygon - 56, BSC - 137)."
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"id": "46a80d27-7503-41d9-a24c-99fe19cd41fe",
+					"name": "Ethereum transaction request object.<br/>\n`gas` is included only if neither of `ignoreChecks` and `ignoreGasEstimate` are true<br/>\nWhen `onlyParams=true` `schemas/RouterParametersExample` is returned\n",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/transactions/:network?gasPrice=dolor est sit in tempor&ignoreChecks=true&ignoreGasEstimate=true&onlyParams=true",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"transactions",
+								":network"
+							],
+							"query": [
+								{
+									"key": "gasPrice",
+									"value": "dolor est sit in tempor"
+								},
+								{
+									"key": "ignoreChecks",
+									"value": "true"
+								},
+								{
+									"key": "ignoreGasEstimate",
+									"value": "true"
+								},
+								{
+									"key": "onlyParams",
+									"value": "true"
+								}
+							],
+							"variable": [
+								{
+									"key": "network",
+									"value": "<Error: Could not resolve allOf schema",
+									"description": "(Required) ID of the network. (Mainnet - 1, Ropsten - 3, Polygon - 56, BSC - 137)."
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						}
+					],
+					"cookie": [],
+					"responseTime": null,
+					"body": "{\n  \"from\": \"0xbe0eb53f46cd790cd13851d5eff43d12404d33e8\",\n  \"to\": \"0xDEF171Fe48CF0115B1d80b88dc8eAB59176FEe57\",\n  \"value\": \"10000000000000000\",\n  \"data\": \"0xf566103400000000000000000000000075e48c954594d64ef9613aeef97ad85370f13807b2b53dca60cae1d1f93f64d80703b888689f28b63c483459183f2f4271fa0308000000000000000000000000000000000000000000000000002386f26fc100000000000000000000000000000000000000000000000000000000000001c2354900000000000000000000000000000000000000000000000000000000000000a00000000000000000000000000000000000000000000000000000000000000002000000000000000000000000eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee000000000000000000000000dac17f958d2ee523a2206206994597c13d831ec7\",\n  \"gasPrice\": \"47490307239\",\n  \"gas\": \"197142\",\n  \"chainId\": 1\n}"
+				},
+				{
+					"id": "68e1e8bb-27f2-405f-963d-653ac4096ff5",
+					"name": "Transaction Building Error",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/transactions/:network?gasPrice=dolor est sit in tempor&ignoreChecks=true&ignoreGasEstimate=true&onlyParams=true",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"transactions",
+								":network"
+							],
+							"query": [
+								{
+									"key": "gasPrice",
+									"value": "dolor est sit in tempor"
+								},
+								{
+									"key": "ignoreChecks",
+									"value": "true"
+								},
+								{
+									"key": "ignoreGasEstimate",
+									"value": "true"
+								},
+								{
+									"key": "onlyParams",
+									"value": "true"
+								}
+							],
+							"variable": [
+								{
+									"key": "network",
+									"value": "<Error: Could not resolve allOf schema",
+									"description": "(Required) ID of the network. (Mainnet - 1, Ropsten - 3, Polygon - 56, BSC - 137)."
+								}
+							]
+						}
+					},
+					"status": "Bad Request",
+					"code": 400,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						}
+					],
+					"cookie": [],
+					"responseTime": null,
+					"body": "{\n  \"error\": \"Unable to process the transaction\"\n}"
+				}
+			]
+		}
+	],
+	"variable": [
+		{
+			"id": "aa4fe77f-4b69-429e-9aa3-9c66ab5e2094",
+			"key": "baseUrl",
+			"value": "https://apiv5.paraswap.io",
+			"type": "string"
+		},
+		{
+			"id": "7595adf9-2e58-484f-930b-b53c258ae47b",
+			"key": "srcDecimals",
+			"value": "18"
+		}
+	]
+}
